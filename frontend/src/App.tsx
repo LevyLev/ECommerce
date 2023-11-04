@@ -1,7 +1,7 @@
-import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
-import { sampleProducts } from './data';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Outlet } from 'react-router-dom';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className='d-flex flex-column vh-100'>
       <header>
@@ -23,27 +23,7 @@ function App() {
       </header>
       <main>
         <Container className='mt-3'>
-          <Row className='products'>
-            {sampleProducts.map((product) => (
-              <Col key={product.slugURL} sm={6} md={4} lg={3}>
-                <div className='product'>
-                  <img
-                    className='product-image'
-                    src={product.image}
-                    alt='product'
-                  />
-                  <div className='product-name'>
-                    <a href='product.html'>{product.name}</a>
-                  </div>
-                  <div className='product-brand'>{product.brand}</div>
-                  <div className='product-price'>{`$${product.price}`}</div>
-                  <div className='product-rating'>
-                    {product.rating} Stars ({product.reviews} Reviews)
-                  </div>
-                </div>
-              </Col>
-            ))}
-          </Row>
+          <Outlet />
         </Container>
       </main>
       <footer>
@@ -51,6 +31,6 @@ function App() {
       </footer>
     </div>
   );
-}
+};
 
 export default App;
