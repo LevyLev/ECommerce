@@ -1,24 +1,28 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const App: React.FC = () => {
   return (
     <div className='d-flex flex-column vh-100'>
       <header>
-        <Navbar bg='dark' variant='dark' expand='lg'>
+        <Navbar id='Navbar-id' bg='dark' variant='dark' expand='lg'>
           <Container>
-            <Navbar.Brand href='/'>Ecommerce</Navbar.Brand>
+            <LinkContainer to='/'>
+              <Navbar.Brand>Ecommerce</Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
-            <Navbar.Collapse id='basic-navbar-nav'></Navbar.Collapse>
+            <Navbar.Collapse id='basic-navbar-nav'>
+              <Nav>
+                <LinkContainer to='/cart'>
+                  <Nav.Link>Cart</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/signin'>
+                  <Nav.Link>Sign In</Nav.Link>
+                </LinkContainer>
+              </Nav>
+            </Navbar.Collapse>
           </Container>
-          <Nav>
-            <a href='/cart' className='nav-link'>
-              Cart
-            </a>
-            <a href='/signin' className='nav-link'>
-              Sign In
-            </a>
-          </Nav>
         </Navbar>
       </header>
       <main>
